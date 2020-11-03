@@ -1,0 +1,6 @@
+Employee1 57543
+Employee2 19238
+Employee3 17352
+Employee4 16532
+Employee5 43285
+Employee6 32281
