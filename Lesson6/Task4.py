@@ -1,0 +1,73 @@
+"""
+Реализуйте базовый класс Car.
+У данного класса должны быть следующие атрибуты: speed, color, name, is_police (булево).
+А также методы: go, stop, turn(direction), которые должны сообщать, что машина поехала, остановилась, повернула (куда).
+Опишите несколько дочерних классов: TownCar, SportCar, WorkCar, PoliceCar.
+Добавьте в базовый класс метод show_speed, который должен показывать текущую скорость автомобиля.
+Для классов TownCar и WorkCar переопределите метод show_speed.
+При значении скорости свыше 60 (TownCar) и 40 (WorkCar) должно выводиться сообщение о превышении скорости.
+Создайте экземпляры классов, передайте значения атрибутов. Выполните доступ к атрибутам, выведите результат.
+Выполните вызов методов и также покажите результат.
+"""
+
+
+class Car:
+
+    def __init__(self, speed, color, name, is_police=False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+
+    def go(self):
+        return f'{self.color} {self.name} go'
+
+    def stop(self):
+        return f'{self.color} {self.name} stop'
+
+    def turn(self, direction):
+        self.direction = direction
+        return f'{self.color} {self.name} turn {self.direction}'
+
+
+class TownCar(Car):
+    def __init__(self, speed, color, name, is_police=False):
+        super().__init__(speed, color, name, is_police)
+
+    def show_speed(self):
+        if self.speed > 60:
+            return f'Over speed! Speed is {self.speed}.'
+        else:
+            return f'Speed is {self.speed}'
+
+
+class SportCar(Car):
+    def __init__(self, speed, color, name, is_police=False):
+        super().__init__(speed, color, name, is_police)
+
+
+class WorkCar(Car):
+    def __init__(self, speed, color, name, is_police=False):
+        super().__init__(speed, color, name, is_police)
+
+    def show_speed(self):
+        if self.speed > 40:
+            return f'Over speed! Speed is {self.speed}'
+        else:
+            return f'Speed is {self.speed}'
+
+
+class PoliceCar(Car):
+    def __init__(self, speed, color, name, is_police=True):
+        super().__init__(speed, color, name, is_police)
+
+
+if __name__ == '__main__':
+    lada = WorkCar(35, 'eggplant', 'Lada')
+    tesla = TownCar(120, 'black', 'Tesla')
+    bugatti = SportCar(416, 'orange', 'Bugatti')
+    uaz = PoliceCar(45, 'white', 'UAZ')
+    print(tesla.go())
+    print(lada.stop())
+    print(tesla.show_speed())
+    print(bugatti.turn('left'))
